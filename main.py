@@ -6,6 +6,8 @@ import speech_recognition as sr
 # Set your OpenAI API key here
 openai.api_key = "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"
 
+#   List of previous message history NOT USED YET.
+previous_messages = []
 
 def generate_response(question):
     prompt = f"Q: {question}\nA:"
@@ -24,6 +26,8 @@ def generate_response(question):
 def get_response():
     question = entry.get()
     response = generate_response(question)
+
+
     output.config(state="normal")
     output.delete("1.0", tk.END)
     output.insert(tk.END, response)
