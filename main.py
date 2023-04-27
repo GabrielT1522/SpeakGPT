@@ -12,14 +12,16 @@ previous_messages = []
 
 def generate_response(question):
     prompt = f"Q: {question}\nA:"
-    response = openai.Completion.create(engine="davinci",
-                                        prompt=prompt,
-                                        temperature=0.7,
-                                        max_tokens=1024,
-                                        top_p=1,
-                                        frequency_penalty=0,
-                                        presence_penalty=0,
-                                        stop=["\n"])
+    response = openai.Completion.create(
+        engine="davinci",
+        prompt=prompt,
+        temperature=0.7,
+        max_tokens=1024,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0,
+        stop=["\n"]
+    )
     answer = response.choices[0].text.strip()
     return answer
 
