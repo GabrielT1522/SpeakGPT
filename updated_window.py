@@ -25,13 +25,21 @@ def generate_response(previous_messages, question):
 
     # Generates reponse from GPT-3 API.
     response = openai.Completion.create(
+        # Set GPT-3 engine.
         engine="davinci",
+        # Set prompt.
         prompt=prompt,
+        # Set temperature (randomness, creativity) of generated text, higher is more random and less predictable.
         temperature=0.7,
+        # Set max number of tokens (words) the model generates.
         max_tokens=1024,
+        # Set P diversity of generated text.
         top_p=1,
+        # Set penalty for generating same word multiple times.
         frequency_penalty=0,
+        # Set penalty for generating words not present in prompt.
         presence_penalty=0,
+        # Stops generating when it encounters character in stop.
         stop=["\n"]
     )
 
@@ -105,7 +113,6 @@ def clear_history(output, previous_messages):
 window = tk.Tk()
 
 entry = tk.Entry(window, width=50, font=("Arial", 14))
-entry.grid(pady=5, row=2, column=0, columnspan=3)
 entry.bind("<Return>", lambda event: get_response())
 
 output = tk.Text(window,
@@ -116,6 +123,8 @@ output = tk.Text(window,
                  fg="white",
                  wrap="word",
                  state="disabled")
+
+entry.grid(pady=5, row=2, column=0, columnspan=3)
 output.grid(pady=5, row=0, column=0, columnspan=3)
 # output.pack(pady=10)
 
@@ -145,10 +154,12 @@ def main():
     record_button = tk.Button(window, text="Record", font=("Arial", 14), command=record_audio)
     # record_button.pack(side="bottom", pady=10)
 
+    #   Sets buttons on grid pos.
     ask_button.grid(row=5, column=2, pady=5)
     clear_button.grid(row=5, column=1, pady=5)
     record_button.grid(row=5, column=0, pady=5)
 
+    #   Sets window on center of screen on start.
     window.eval('tk::PlaceWindow . center')
     window.mainloop()
 
