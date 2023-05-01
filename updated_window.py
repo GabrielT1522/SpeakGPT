@@ -8,7 +8,7 @@ from chat_history import add_question_to_history
 from chat_history import add_answer_to_history
 
 # Set your OpenAI API key here
-openai.api_key = "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"
+openai.api_key = "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"
 
 # List of previous message history NOT USED YET.
 session_chat_history = []
