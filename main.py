@@ -152,7 +152,6 @@ record_label = tk.Label(window, text="Recording has a 5 second limit.",font=("Ar
 
 def main():
     window.title("SpeakGPT")
-    window.geometry("412x350")
     window.resizable(False, False)
     window.configure(bg="#292d3e")
 
