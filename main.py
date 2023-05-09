@@ -24,7 +24,7 @@ def generate_response(previous_messages, question):
     # Generates response from GPT-3 API.
     response = openai.Completion.create(
         # Set GPT-3 engine.
-        engine="davinci",
+        engine="text-davinci-003",
         # Set prompt.
         prompt=prompt,
         # Set temperature (randomness, creativity) of generated text, higher is more random and less predictable.
@@ -38,7 +38,7 @@ def generate_response(previous_messages, question):
         # Set penalty for generating words not present in prompt.
         presence_penalty=0.2,
         # Stops generating when it encounters character in stop.
-        stop=["\n"]
+        stop=None
     )
 
     # Gets the reply from the openAI data structure data returned from the API call.
