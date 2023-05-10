@@ -1,5 +1,4 @@
 import tkinter as tk
-
 import openai
 import soundfile as sf
 import sounddevice as sd
