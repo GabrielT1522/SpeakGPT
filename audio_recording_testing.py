@@ -38,6 +38,7 @@ parser = argparse.ArgumentParser(
     parents=[parser]
 )
 
+# TODO: Change the metavar to the filename to store the recording to.
 parser.add_argument(
     'filename', nargs='?', metavar='FILENAME',
     help='audio file to store recording to'
@@ -71,7 +72,10 @@ def callback(indata, frames, time, status):
         print(status, file=sys.stderr)
     q.put(indata.copy())
 
-
+# TODO:
+# Place this in a while loop structure.
+# Global var recording=False turns True when user presses button, turns False when user presses button again.
+# Runs write loop while recording is True.
 try:
     if args.samplerate is None:
         device_info = sd.query_devices(args.device, 'input')
